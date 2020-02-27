@@ -1,9 +1,14 @@
 import React from 'react';
+import NavBar from './components/NavBar/index';
+import Display from './components/Display/index';
 
 function App() {
   return (
-    <div className="App">
-     <h1> news</h1>
+    <div>
+    <NavBar/>
+    <Display/>
+
+
     </div>
   );
 }
