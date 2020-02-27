@@ -1,6 +1,7 @@
 import React from 'react';
 import './display.css';
 import {Card,Button} from 'react-bootstrap';
+import { apiCall } from '../../apiCall';
 const Display = () =>{
     return(
         <div className="mainStructure">
@@ -16,7 +17,10 @@ const Display = () =>{
     <Button variant="primary">Go somewhere</Button>
   </Card.Body>
 </Card>
+
         </div>
     )
 }
+
+apiCall();
 export default Display;
