@@ -16,7 +16,23 @@ class Display extends Component {
 
   componentDidMount() {
 
-    var url = "http://newsapi.org/v2/top-headlines?country=us&apiKey=" + process.env.REACT_APP_API_AUTH;
+
+  }
+
+  setValue =  async() => {
+    if (this.state.select < 18) {
+      this.setState({
+        select: this.state.select + 1
+      })
+    }
+    else {
+      this.setState({
+        select: 1
+      })
+    }
+
+
+    var url = await "http://newsapi.org/v2/top-headlines?country=us&apiKey=" + process.env.REACT_APP_API_AUTH;
 
 
     axios.get(url)
@@ -30,32 +46,16 @@ class Display extends Component {
 
         })
 
-        console.log(this.state.data)
-        console.log(this.state.data[this.state.select].description)
+        console.log(this.state.data[2])
+     
       })
-
-
-  }
-
-  setValue = () => {
-    if (this.state.select < 18) {
-      this.setState({
-        select: this.state.select + 1
-      })
-    }
-    else {
-      this.setState({
-        select: 1
-      })
-    }
-
 
   }
 
   render() {
     return (
       <div className="mainStructure">
-        <h3> DISPLAY</h3>
+        <h3> {this.state.data[2].title}</h3>
         <InputGroup className="mb-3" >
           <FormControl
             placeholder="Search......"
@@ -75,8 +75,8 @@ class Display extends Component {
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3></h3>
-              <p>{this.state.data[this.state.select].title}</p>
+              <h3>{this.state.data.title}</h3>
+              <p></p>
             </Carousel.Caption>
           </Carousel.Item>
 
