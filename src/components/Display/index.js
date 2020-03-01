@@ -16,46 +16,38 @@ class Display extends Component {
 
   componentDidMount() {
 
-
-  }
-
-  setValue =  async() => {
-    if (this.state.select < 18) {
-      this.setState({
-        select: this.state.select + 1
-      })
-    }
-    else {
-      this.setState({
-        select: 1
-      })
-    }
-
-
-    var url = await "http://newsapi.org/v2/top-headlines?country=us&apiKey=" + process.env.REACT_APP_API_AUTH;
+    var url =  "http://newsapi.org/v2/top-headlines?country=us&apiKey=" + process.env.REACT_APP_API_AUTH;
 
 
     axios.get(url)
       .then(response => {
-
-        console.log(response.data.articles)
-        this.setState({
-          data: response.data.articles
-          
-       
-
-        })
-
-        console.log(this.state.data[2])
-     
+        for(var i = 0; i <response.data.articles.length; i++){
+     this.setState({
+       data: [
+         ...this.state.data,response.data.articles.title
+       ]
+     })
+    }
       })
+
+    }
+  
+     
+  
+
+
+  setValue =  () => {
+
 
   }
 
   render() {
+    this.setValue()
+    console.log(this.state.data)
     return (
       <div className="mainStructure">
-        <h3> {this.state.data[2].title}</h3>
+        <h3>
+    {this.state.data}</h3>
         <InputGroup className="mb-3" >
           <FormControl
             placeholder="Search......"
@@ -71,11 +63,11 @@ class Display extends Component {
           <Carousel.Item>
             <img
               className="caroImage"
-              src={this.state.data.urlToImage}
+              
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3>{this.state.data.title}</h3>
+              <h3>{}</h3>
               <p></p>
             </Carousel.Caption>
           </Carousel.Item>
