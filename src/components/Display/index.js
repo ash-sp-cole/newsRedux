@@ -20,17 +20,14 @@ class Display extends Component {
 
 
     axios.get(url)
-      .then(response => {
-        for(var i = 0; i <response.data.articles.length; i++){
-     this.setState({
-       data: [
-         ...this.state.data,response.data.articles.title
-       ]
-     })
-    }
-      })
-
-    }
+      .then(res => {
+       const request = res.data
+        this.setState({
+          data:request.articles
+        })
+ 
+       })
+      }
   
      
   
@@ -43,11 +40,11 @@ class Display extends Component {
 
   render() {
     this.setValue()
-    console.log(this.state.data)
+    console.log(this.state," render")
     return (
       <div className="mainStructure">
         <h3>
-    {this.state.data}</h3>
+    {this.state.data.map(titleName => <p>{titleName.name}</p>)}</h3>
         <InputGroup className="mb-3" >
           <FormControl
             placeholder="Search......"
