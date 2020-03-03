@@ -3,7 +3,6 @@ import './display.css';
 import { Carousel, Button, InputGroup, FormControl } from 'react-bootstrap';
 import {apiRequestPosts} from '../actions';
 import {connect} from 'react-redux';
-import axios from 'axios';
 
 class Display extends Component {
 
