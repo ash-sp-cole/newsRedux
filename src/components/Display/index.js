@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './display.css';
 import { Carousel, Button, InputGroup, FormControl } from 'react-bootstrap';
-
+import {apiRequestPosts} from '../actions';
+import {connect} from 'react-redux';
 import axios from 'axios';
 
 class Display extends Component {
@@ -9,24 +10,11 @@ class Display extends Component {
 
   state = {
     data: [],
-    description: [],
-    image: [],
-    select: 0
+   
   }
 
   componentDidMount() {
-
-    var url =  "http://newsapi.org/v2/top-headlines?country=us&apiKey=" + process.env.REACT_APP_API_AUTH;
-
-
-    axios.get(url)
-      .then(res => {
-       const request = res.data
-        this.setState({
-          data:request.articles
-        })
- 
-       })
+this.props.apiRequestPosts();
       }
   
      
@@ -35,12 +23,11 @@ class Display extends Component {
 
   setValue =  () => {
 
-
   }
 
   render() {
     this.setValue()
-    console.log(this.state," render")
+   
     return (
       <div className="mainStructure">
         <h3>
@@ -76,4 +63,4 @@ class Display extends Component {
   }
 }
 
-export default Display;
+export default connect (null,{apiRequestPosts}) (Display);
