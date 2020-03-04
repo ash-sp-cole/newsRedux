@@ -1,16 +1,28 @@
 import axios from 'axios';
 
 
-export const GET_POSTS = "GET_POSTS";
 
-export const apiRequestPosts = () =>
-    dispatch => {
+
+export const apiRequestPosts  = () =>
+async dispatch  => {
 
         const URL = ("https://jsonplaceholder.typicode.com")
-        const response = axios.get(URL + "/posts")
-        
+        const response = await axios.get("https://jsonplaceholder.typicode.com/posts")
+       
         dispatch({
-            type: GET_POSTS,
-            payload: response
+            type: "GET_POSTS",
+            payload: response.data
         })
+    
     }
+
+export const apiRequestUsers = (id) => 
+ async dispatch =>{
+    const response = await axios.get("https://jsonplaceholder.typicode.com/users/"+ id)
+
+    dispatch({
+        type: "GET_USERS",
+        payload:response
+    })
+  
+ }
