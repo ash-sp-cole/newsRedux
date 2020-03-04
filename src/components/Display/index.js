@@ -29,7 +29,7 @@ class Display extends Component {
           {post.title}
           </Card.Text>
           <Button variant="primary">Go somewhere</Button>
-        <UserInfo userId={post.userId}/>
+        <UserInfo userIdProp={post.userId}/>
         </Card.Body>
       </Card>
        

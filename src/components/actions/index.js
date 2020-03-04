@@ -18,11 +18,11 @@ async dispatch  => {
 
 export const apiRequestUsers = (id) => 
  async dispatch =>{
-    const response = await axios.get("https://jsonplaceholder.typicode.com/users/"+ id)
+    const response = await axios.get("https://jsonplaceholder.typicode.com/users/" + id)
 
     dispatch({
         type: "GET_USERS",
-        payload:response
+        payload:response.data
     })
   
  }

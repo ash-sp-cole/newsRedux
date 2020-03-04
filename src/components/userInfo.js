@@ -6,19 +6,18 @@ import {Spinner} from 'react-bootstrap';
 class UserInfo extends Component {
 
 componentDidMount () {
-    this.props.apiRequestUsers(this.props.userId)
+    this.props.apiRequestUsers(this.props.userIdProp)
 
 }
 
 
     render(){
+const user = this.props.users.find(user => user.id === this.propss.userIdProp)
 
-        const user = this.props.users.find((user) => user.id === this.props.userId );
-        if (!user) {return < div >   <Spinner animation="grow" /> </div>}
-
+console.log(this.props.users)
         return(
             <div>
-              {user.name}
+             <h1>{user.name} </h1> 
             </div>
         )
     }
