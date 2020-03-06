@@ -6,23 +6,25 @@ import axios from 'axios';
 export const apiRequestPosts  = () =>
 async dispatch  => {
 
-        const URL = ("https://jsonplaceholder.typicode.com")
-        const response = await axios.get("https://jsonplaceholder.typicode.com/posts")
+    var url = "http://newsapi.org/v2/top-headlines?country=us&apiKey="+ process.env.REACT_APP_API_AUTH;
+        const response = await axios.get(url)
        
         dispatch({
             type: "GET_POSTS",
-            payload: response.data
+            payload: response.data.articles
         })
     
     }
 
-export const apiRequestUsers = (id) => 
- async dispatch =>{
-    const response = await axios.get("https://jsonplaceholder.typicode.com/users/" + id)
+// export const apiRequestUsers = (id) => 
+//  async dispatch =>{
+//     const response = await axios.get("https://jsonplaceholder.typicode.com/users/" + id)
 
-    dispatch({
-        type: "GET_USERS",
-        payload:response.data
-    })
+//     dispatch({
+//         type: "GET_USERS",
+//         payload:response.data
+//     })
   
- }
+//  }
+
+// https://api.spoonacular.com/recipes/search

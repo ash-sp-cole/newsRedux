@@ -17,24 +17,40 @@ class Display extends Component {
     this.props.apiRequestPosts();
   }
 
-  renderList (){
-    return this.props.posts.map (post =>{
+  renderList() {
+    return this.props.posts.map(post => {
       return (
-        <div className="item" key={post.id}>
-        <Card bg="light" style={{ width: '18rem', margin:"auto" , marginBottom: "10px"}}>
-      
-        <Card.Body>
-          <Card.Title>{post.userId}</Card.Title>
-          <Card.Text>
-          {post.title}
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        <UserInfo userIdProp={post.userId}/>
-        </Card.Body>
-      </Card>
-       
-        
-       
+        <div className="item" key={post.url}>
+       {/* <Card className="bg-dark text-white" style={{marginBottom: "10px"}} >
+           
+            <Card.Body>
+              <Card.Title>  {post.title}</Card.Title>
+              <Card.Img  className="caroImage"  src={post.urlToImage} alt="Card image" />
+             
+                <Card.Title>Card title</Card.Title>
+                <Card.Text>
+                {post.description}
+                 </Card.Text>
+              <Button variant="primary" href={post.url}>view article</Button>
+              <Card.Footer className="text-muted">2 days ago</Card.Footer>
+            </Card.Body>
+          </Card> */}
+
+<Carousel>
+          <Carousel.Item>
+            <img src={post.urlToImage}
+              className="caroImage"
+
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>{}</h3>
+              <p></p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+        </Carousel>
+
         </div>
       )
     })
@@ -62,20 +78,7 @@ class Display extends Component {
             <Button variant="outline-secondary" onClick={() => this.setValue()} >Submit</Button>
           </InputGroup.Append>
         </InputGroup>
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className="caroImage"
-
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>{}</h3>
-              <p></p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-        </Carousel>
+       
 
       </div>
     )
