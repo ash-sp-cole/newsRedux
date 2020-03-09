@@ -6,7 +6,7 @@ import axios from 'axios';
 export const apiRequestPosts  = () =>
 async dispatch  => {
 
-    var url = "http://newsapi.org/v2/top-headlines?country=us&apiKey="+ process.env.REACT_APP_API_AUTH;
+    var url = "http://newsapi.org/v2/top-headlines?country=us&apiKey="+ process.env.REACT_APP_API_KEY;
         const response = await axios.get(url)
        
         dispatch({
